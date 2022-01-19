@@ -62,7 +62,7 @@ for var in all_vairables.split('\n')[2:]:
         data = results.strip()
     all_data[var] = data
 
-with open('../variables.json', 'w') as outfile:
+with open('variables.json', 'w') as outfile:
     json.dump(all_data, outfile, indent=4)
 
 end_time = datetime.datetime.utcnow()

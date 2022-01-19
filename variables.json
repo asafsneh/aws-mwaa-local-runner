@@ -1,0 +1,141 @@
+{
+    "AWS_MOBILE_ROLE": "arn:aws:iam::032106861074:role/bi_dev_etl",
+    "AWS_MOBILE_ROLE_FOR_DWH": "arn:aws:iam::081306071254:role/bi_dev_etl",
+    "COPY_PARAMETERS": "STATUPDATE ON TRIMBLANKS\r\nREMOVEQUOTES\r\nFILLRECORD\r\nEMPTYASNULL\r\nBLANKSASNULL\r\nACCEPTINVCHARS as '?'\r\ndelimiter '^'\r\nGZIP",
+    "S3_MAIN_PATH_MOBILE": "s3://ssa.bi/etl_data/ETL/Supersonic/",
+    "VICTOROPS_TOKEN": "https://alert.victorops.com/integrations/generic/20131114/alert/6b24f6a6-3540-478e-b972-d9d3bd6b7301/",
+    "advertiser": {
+        "copy_parameters": "default",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.advertiser"
+            },
+            {
+                "dest_conn_id": "production-ssd",
+                "dest_table": "bi.advertiser"
+            },
+            {
+                "dest_conn_id": "bi-dwh",
+                "dest_table": "mobile.advertiser"
+            }
+        ],
+        "max_delay": 1500,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    },
+    "demand_configuration_analytics_metrics": {
+        "copy_parameters": "default",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.demand_configuration_analytics_metrics"
+            }
+        ],
+        "max_delay": 1500,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    },
+    "demand_configuration_asset_file_validation": {
+        "copy_parameters": "default",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.demand_configuration_asset_file_validation"
+            }
+        ],
+        "max_delay": 1500,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    },
+    "MOBILE_FAILURE_EMAIL": "asaf.sneh@is.com",
+    "demand_configuration_asset_origin_type": {
+        "copy_parameters": [
+            "MAXERROR AS 1",
+            "TRUNCATECOLUMNS",
+            "STATUPDATE ON TRIMBLANKS",
+            "REMOVEQUOTES",
+            "FILLRECORD",
+            "EMPTYASNULL",
+            "BLANKSASNULL",
+            "ACCEPTINVCHARS as '?'",
+            "delimiter '^'",
+            "GZIP"
+        ],
+        "copy_query_path": "/generic_queries/delete_and_copy.sql",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.demand_configuration_asset_origin_type_airflow_test"
+            }
+        ],
+        "max_delay": 0,
+        "name": "DemandConfigurationAssetOriginType",
+        "qubole_table_name": "configurations.demand_configuration_asset_origin_type",
+        "retry_delay": 1,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a",
+        "source_table": "main.demand_configuration_asset_origin_type",
+        "unload_query_path": "/demand_configuration_asset_origin_type.sql",
+        "victorops_team": ""
+    },
+    "demand_configuration_asset_status_reason": {
+        "allowed_running_time": 5,
+        "copy_parameters": "default",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.demand_configuration_asset_status_reason"
+            }
+        ],
+        "max_delay": 1500,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    },
+    "test": {
+        "copy_parameters": "default",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.advertiser"
+            },
+            {
+                "dest_conn_id": "production-ssd",
+                "dest_table": "bi.advertiser"
+            },
+            {
+                "dest_conn_id": "bi-dwh",
+                "dest_table": "mobile.advertiser"
+            }
+        ],
+        "max_delay": 0,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    },
+    "demand_configuration_asset_source": {
+        "allowed_running_time": 5,
+        "copy_parameters": "default",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.demand_configuration_asset_source"
+            }
+        ],
+        "max_delay": 1500,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    },
+    "ox_campaigns": {
+        "copy_parameters": "MAXERROR AS 1 TRUNCATECOLUMNS STATUPDATE ON TRIMBLANKS REMOVEQUOTES FILLRECORD EMPTYASNULL BLANKSASNULL ACCEPTINVCHARS as '?' delimiter '^' GZIP",
+        "destination": [
+            {
+                "dest_conn_id": "is-mobile-ssd",
+                "dest_table": "bi.ox_campaigns_nastia"
+            }
+        ],
+        "max_delay": 1500,
+        "retry_delay": 1,
+        "schedule_interval": "@daily",
+        "source_conn_id": "slave5a"
+    }
+}
