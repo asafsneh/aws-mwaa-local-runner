@@ -21,6 +21,7 @@ services:
         environment:
             - LOAD_EX=n
             - EXECUTOR=Local
+            - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
         logging:
             options:
                 max-size: 10m
@@ -28,6 +29,9 @@ services:
         volumes:
             - ${PWD}/dags:/usr/local/airflow/dags
             - ${PWD}/plugins:/usr/local/airflow/plugins
+            - ${PWD}/bi_scripts/variables.json:/usr/local/airflow/variables.json
+            - /Users/asaf.sneh/.aws/credentials:/usr/local/airflow/.aws/credentials
+            - /Users/asaf.sneh/.aws/config:/usr/local/airflow/.aws/config
         ports:
             - "8080:8080"
         command: local-runner

@@ -4,3 +4,5 @@ dags/**/*.pyc
 /.idea
 /logs
 /db-data
+/tests
+/bi_scripts/variables.json
