@@ -70,14 +70,20 @@ test-requirements)
 build-image)
    build_image
    ;;
-reset-db)
-   docker-compose -f ./docker/docker-compose-resetdb.yml up
-   ;;
 start)
-   docker-compose -f ./docker/docker-compose-local.yml up
+   docker-compose -f ./docker/docker-compose-local.yml up -d
    ;;
-help)
-   display_help
+stop)
+   docker-compose -f ./docker/docker-compose-local.yml stop
+   ;;
+full-start)
+    if python3 ./bi_scripts/get_all_varaiables.py; then
+      echo "Exit code of 0, succeed to get all variables"
+    else
+      echo "Exit code of $?, failure"
+      exit
+    fi
+   docker-compose -f ./docker/docker-compose-local.yml up -d
    ;;
 *)
    echo "No command specified, displaying help"

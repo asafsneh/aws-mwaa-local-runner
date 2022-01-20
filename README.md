@@ -1,6 +1,9 @@
 # About aws-mwaa-local-runner
 
 This repository provides a command line interface (CLI) utility that replicates an Amazon Managed Workflows for Apache Airflow (MWAA) environment locally.
+Forked from https://github.com/aws/aws-mwaa-local-runner
+and edited by @asaf.sneh
+
 
 ## About the CLI
 
@@ -39,7 +42,7 @@ docker/
 ## Get started
 
 ```bash
-git clone https://github.com/aws/aws-mwaa-local-runner.git
+git clone this repo
 cd aws-mwaa-local-runner
 ```
 
@@ -51,21 +54,34 @@ Build the Docker container image using the following command:
 ./mwaa-local-env build-image
 ```
 
-**Note**: it takes several minutes to build the Docker image locally.
+**Note**: it takes several minutes at the first time to build the Docker image locally.
+### Step 1.5: Running onelogin-assume-role
+Before launching Airflow Docker, you need to make sure you have the permissions to our AWS account.
+Therefore you need to run onelogin-assume-role script.
+
+You can read more about it here:
+https://jira.ironsrc.com/confluence/display/Ops/HowTo:+work+with+AWS+services+programmatically
+
 
 ### Step two: Running Apache Airflow
 
 Run Apache Airflow using one of the following database backends.
-
-#### Local runner
-
 Runs a local Apache Airflow environment that is a close representation of MWAA by configuration.
 
+#### full start option to Get all variables and then launching Airflow
+```bash
+./mwaa-local-env full-start
+```
+
+#### start option to just run Airflow (after you already have the variables it's enough)
 ```bash
 ./mwaa-local-env start
 ```
 
-To stop the local environment, Ctrl+C on the terminal and wait till the local runner and the postgres containers are stopped.
+To stop the local environment:
+```bash
+./mwaa-local-env stop
+```
 
 ### Step three: Accessing the Airflow UI
 
