@@ -7,3 +7,4 @@ dags/**/*.pyc
 /tests
 /bi_scripts/variables.json
 /plugins/operators/__pycache__
+/dags/__pycache__
