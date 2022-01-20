@@ -12,8 +12,9 @@ display_help() {
    echo "---commands---"
    echo "help                   Print CLI help"
    echo "build-image            Build Image Locally"
-   echo "reset-db               Reset local PostgresDB container."
+   echo "full-start             Get all variables from Production + start Airflow local environment."
    echo "start                  Start Airflow local environment. (LocalExecutor, Using postgres DB)"
+   echo "stop                   Stop the docker envioremnt."
    echo "test-requirements      Install requirements on an ephemeral instance of the container."
    echo "validate-prereqs       Validate pre-reqs installed (docker, docker-compose, python3, pip3)"
    echo
