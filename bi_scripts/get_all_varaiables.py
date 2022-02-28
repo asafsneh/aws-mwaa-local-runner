@@ -42,7 +42,7 @@ def get_from_airflow_api(command, mwaa_auth_token, mwaa_webserver_hostname):
 
 
 # create token for Airflow
-mwaa_auth_token, mwaa_webserver_hostname = create_airflow_token('airflow-mobile-test8')
+mwaa_auth_token, mwaa_webserver_hostname = create_airflow_token('airflow-data-prod')
 
 start_time = datetime.datetime.utcnow()
 print(start_time)
